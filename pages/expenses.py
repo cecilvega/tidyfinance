@@ -12,7 +12,7 @@ st.dataframe(df.drop(columns=["operation"]))  # Same as st.write(df)
 
 
 # Bar chart of top consumed products
-top_consumed_products = df.groupby("descripcion")["monto"].sum().reset_index().sort_values("cantidad", ascending=False)
+top_consumed_products = df.groupby("descripcion")["monto"].sum().reset_index().sort_values("monto", ascending=False)
 fig_top_consumed_products = px.bar(
     top_consumed_products.head(10), x="descripcion", y="monto", title="Top Consumed Products"
 )
