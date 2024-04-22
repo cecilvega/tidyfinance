@@ -16,7 +16,7 @@ top_consumed_products = (
     df.groupby("descripcion")["cantidad"].sum().reset_index().sort_values("cantidad", ascending=False)
 )
 fig_top_consumed_products = px.bar(
-    top_consumed_products.head(10), x="descripcion", y="cantidad", title="Top Consumed Products"
+    top_consumed_products.head(10), x="descripcion", y="monto", title="Top Consumed Products"
 )
 
 st.plotly_chart(fig_top_consumed_products)
