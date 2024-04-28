@@ -21,7 +21,7 @@ def read_expenses():
     file_id = "1WOcaZOyHYGhebc80gsgoLjw4ofabIymCJkq7smgvsH8"
 
     # Specify the range of cells you want to read (e.g., "Sheet1!A1:C10")
-    range_name = "gastos"
+    range_name = "expenses"
 
     # Make a request to get the values from the specified range
     result = sheets_service.spreadsheets().values().get(spreadsheetId=file_id, range=range_name).execute()
@@ -32,8 +32,8 @@ def read_expenses():
     # Convert the data to a pandas DataFrame
     df = pd.DataFrame(data[1:], columns=data[0])
     df.columns = df.columns.str.lower()
-    df["fecha"] = pd.to_datetime(df["fecha"]).dt.date
-    df["monto"] = pd.to_numeric(df["monto"])
+    df["date"] = pd.to_datetime(df["date"])
+    df["amount"] = pd.to_numeric(df["amount"])
     return df
 
 
